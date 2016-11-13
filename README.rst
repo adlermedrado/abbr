@@ -1,4 +1,4 @@
 abbr
 ========
 
-A library for Abbreviate string contents
+A library to Abbreviate string contents
