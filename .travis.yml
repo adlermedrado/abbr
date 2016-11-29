@@ -6,9 +6,8 @@ python:
 install:
   - pip install -r requirements-test.txt
   - pip install flake8
-  - pip install pytest
 
 before_script:
   - flake8 --max-line-length=120
 
-script: pytest
+script: py.test
