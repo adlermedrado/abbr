@@ -28,22 +28,22 @@ def test_abbreviate_params():
 
 def test_abbreviate_params_phrase_not_null_exception():
     with pytest.raises(PhraseNotFoundError):
-        abbr = Abbreviate('', 40, 'pt-br')
+        Abbreviate('', 40, 'pt-br')
 
 
 def test_abbreviate_params_language_not_null_exception():
     with pytest.raises(LanguageNotFoundError):
         phrase = "Olá Senhor Professor Doutor Jair de Lima Pinto Sobrinho, como vai, tudo bem?"
-        abbr = Abbreviate(phrase, 40, '')
+        Abbreviate(phrase, 40, '')
 
 
 def test_abbreviate_params_length_not_null_exception():
     with pytest.raises(LengthNotFoundError):
         phrase = "Olá Senhor Professor Doutor Jair de Lima Pinto Sobrinho, como vai, tudo bem?"
-        abbr = Abbreviate(phrase, '', 'pt-br')
+        Abbreviate(phrase, '', 'pt-br')
 
 
 def test_abbreviate_params_length_must_be_greater_than_zero():
     with pytest.raises(LengthSizeError):
         phrase = "Olá Senhor Professor Doutor Jair de Lima Pinto Sobrinho, como vai, tudo bem?"
-        abbr = Abbreviate(phrase, 0, 'pt-br')
+        Abbreviate(phrase, 0, 'pt-br')
