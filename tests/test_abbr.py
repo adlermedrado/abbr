@@ -47,3 +47,9 @@ def test_abbreviate_params_length_must_be_greater_than_zero():
     with pytest.raises(LengthSizeError):
         phrase = "Olá Senhor Professor Doutor Jair de Lima Pinto Sobrinho, como vai, tudo bem?"
         Abbreviate(phrase, 0, 'pt-br')
+
+
+def test_abbreviation_replace():
+    phrase = "Olá Senhor Professor Doutor Jair de Lima Pinto Sobrinho, como vai, tudo bem?"
+    abbr = Abbreviate(phrase, 40, 'pt-br')
+    assert abbr.new_phrase == "Olá Sr. Prof. Dr. Jair de Lima Pinto Sobrinho, como vai, tudo bem?"

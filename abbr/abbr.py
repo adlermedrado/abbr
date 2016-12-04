@@ -20,6 +20,15 @@ class Abbreviate:
         self.phrase = phrase
         self.length = length
         self.language = language
+        self.new_phrase = ''
+
+    def do_abbreviation(self):
+        __import__("abbr", "pt_BR")
+        for key, value in abbr.pt_BR.pt_BR.pt_BR.items():
+            new_phrase = self.phrase.replace(key, value)
+
+        self.new_phrase = new_phrase
+        return new_phrase
 
     @property
     def length(self):
