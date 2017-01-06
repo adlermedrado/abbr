@@ -11,24 +11,26 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+from importlib import import_module
 
-from abbr.exceptions import PhraseNotFoundError, LanguageNotFoundError, LengthNotFoundError, LengthSizeError
-
+from exceptions import LengthNotFoundError, LengthSizeError, LanguageNotFoundError, PhraseNotFoundError
 
 class Abbreviate:
     def __init__(self, phrase, length, language):
         self.phrase = phrase
         self.length = length
         self.language = language
-        self.new_phrase = ''
+        self.new_phrase = phrase
 
     def do_abbreviation(self):
-        __import__("abbr", "pt_BR")
-        for key, value in abbr.pt_BR.pt_BR.pt_BR.items():
-            new_phrase = self.phrase.replace(key, value)
+        dictionary  = import_module("abbr.languages.{}.dictionary".format(self.language))
+        for key, value in dictionary.word_list.items():
+            self.new_phrase = self.new_phrase.replace(key, value)
 
-        self.new_phrase = new_phrase
-        return new_phrase
+
+    def truncate_phrase(self):
+        self.new_phrase = self.new_phrase[:self.length]
+
 
     @property
     def length(self):

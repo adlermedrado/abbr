@@ -13,22 +13,23 @@
 # limitations under the License.
 
 import pytest
+
 from abbr.abbr import Abbreviate
-from abbr.exceptions import PhraseNotFoundError, LanguageNotFoundError, LengthNotFoundError, LengthSizeError
+from exceptions import PhraseNotFoundError, LanguageNotFoundError, LengthNotFoundError, LengthSizeError
 
 
 def test_abbreviate_params():
     phrase = "Olá Senhor Professor Doutor Jair de Lima Pinto Sobrinho, como vai, tudo bem?"
-    abbr = Abbreviate(phrase, 40, 'pt-br')
+    abbr = Abbreviate(phrase, 40, 'pt_br')
     assert abbr.phrase == phrase
-    assert abbr.language == 'pt-br'
+    assert abbr.language == 'pt_br'
     assert abbr.length == 40
     assert abbr.length > 0
 
 
 def test_abbreviate_params_phrase_not_null_exception():
     with pytest.raises(PhraseNotFoundError):
-        Abbreviate('', 40, 'pt-br')
+        Abbreviate('', 40, 'pt_br')
 
 
 def test_abbreviate_params_language_not_null_exception():
@@ -40,16 +41,19 @@ def test_abbreviate_params_language_not_null_exception():
 def test_abbreviate_params_length_not_null_exception():
     with pytest.raises(LengthNotFoundError):
         phrase = "Olá Senhor Professor Doutor Jair de Lima Pinto Sobrinho, como vai, tudo bem?"
-        Abbreviate(phrase, '', 'pt-br')
+        Abbreviate(phrase, '', 'pt_br')
 
 
 def test_abbreviate_params_length_must_be_greater_than_zero():
     with pytest.raises(LengthSizeError):
         phrase = "Olá Senhor Professor Doutor Jair de Lima Pinto Sobrinho, como vai, tudo bem?"
-        Abbreviate(phrase, 0, 'pt-br')
+        Abbreviate(phrase, 0, 'pt_br')
 
 
 def test_abbreviation_replace():
     phrase = "Olá Senhor Professor Doutor Jair de Lima Pinto Sobrinho, como vai, tudo bem?"
-    abbr = Abbreviate(phrase, 40, 'pt-br')
-    assert abbr.new_phrase == "Olá Sr. Prof. Dr. Jair de Lima Pinto Sobrinho, como vai, tudo bem?"
+    abbr = Abbreviate(phrase, 40, 'pt_br')
+    abbr.do_abbreviation()
+    abbr.truncate_phrase()
+    assert abbr.new_phrase == "Olá Sr. Prof. Dr. Jair de Lima Pinto Sob"
+    assert len(abbr.new_phrase) == 40
