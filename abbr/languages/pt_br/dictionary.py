@@ -16,4 +16,11 @@ word_list = {
     'Professor': 'Prof.',
     'Senhor': 'Sr.',
     'Doutor': 'Dr.',
+    'Avenida': 'Av.',
+    'Travessa': 'Tv.',
+    'Número': 'Nº',
+    'Primeiro': '1º',
+    'Primeira': '1ª',
+    'Segundo': '2º',
+    'Segunda': '2ª',
 }
