@@ -28,6 +28,7 @@ setup(
     author="Adler Brediks Medrado",
     author_email="abbr@adlermedrado.com.br",
 
+    license="Apache-2.0",
     description="A client library to abbreviate string contents",
     long_description=open('README.rst').read(),
 
