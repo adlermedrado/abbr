@@ -13,7 +13,8 @@
 # limitations under the License.
 from importlib import import_module
 
-from exceptions import LengthNotFoundError, LengthSizeError, LanguageNotFoundError, PhraseNotFoundError
+from abbr.exceptions import LengthNotFoundError, LengthSizeError, LanguageNotFoundError, PhraseNotFoundError
+
 
 class Abbreviate:
     def __init__(self, phrase, length, language):
@@ -23,14 +24,12 @@ class Abbreviate:
         self.new_phrase = phrase
 
     def do_abbreviation(self):
-        dictionary  = import_module("abbr.languages.{}.dictionary".format(self.language))
+        dictionary = import_module("abbr.languages.{}.dictionary".format(self.language))
         for key, value in dictionary.word_list.items():
             self.new_phrase = self.new_phrase.replace(key, value)
 
-
     def truncate_phrase(self):
         self.new_phrase = self.new_phrase[:self.length]
-
 
     @property
     def length(self):
