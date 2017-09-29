@@ -15,7 +15,7 @@
 import pytest
 
 from abbr.abbr import Abbreviate
-from abbr.exceptions import PhraseNotFoundError, LanguageNotFoundError, LengthNotFoundError, LengthSizeError
+from abbr.exceptions import LanguageNotFoundError, LengthNotFoundError, LengthSizeError, PhraseNotFoundError
 
 
 def test_abbreviate_params():
