@@ -4,8 +4,7 @@ python:
   - 3.5
 
 install:
-  - pip install -r requirements-test.txt
-  - pip install flake8
+  - pipenv install --dev
 
 before_script:
   - flake8 --max-line-length=120

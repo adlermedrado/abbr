@@ -1,5 +1,0 @@
--r requirements.txt
-mypy-lang
-pytest
-pytest-cov
-pytest-factoryboy
